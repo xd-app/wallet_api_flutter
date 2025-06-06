@@ -2,14 +2,26 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:wallet_api_flutter/src/model/block_info_model.dart';
 import 'package:wallet_api_flutter/src/model/wallet_assets_model.dart';
 import 'package:wallet_api_flutter/src/model/wallet_response.dart';
 
 mixin _DioMixin {
   late Dio _dio;
 
+  final _log = LogInterceptor(
+      requestHeader: true, requestBody: true, responseBody: true);
+
   set baseUrl(String url) {
     _dio.options.baseUrl = url;
+  }
+
+  void enableLog(bool enable) {
+    if (enable) {
+      _dio.interceptors.add(_log);
+    } else {
+      _dio.interceptors.remove(_log);
+    }
   }
 }
 
@@ -49,6 +61,13 @@ mixin _ApiMixin on _DioMixin {
     return await _dio.getAccept(walletAssets,
         queryParameters: {'address': address},
         decode: (data) => WalletAssetsModel.fromJson(data));
+  }
+
+  Future<WalletResponse<BlockInfo?>> getAverageBlockTime(
+      {required String address}) async {
+    return await _dio.getAccept(walletAssets,
+        queryParameters: {'address': address},
+        decode: (data) => BlockInfo.fromJson(data));
   }
 }
 
