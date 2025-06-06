@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:waller_api_flutter/waller_api_flutter.dart';
+import 'package:wallet_api_flutter/wallet_api_flutter.dart';
 
 void main() {
   test('adds one to input values', () async{

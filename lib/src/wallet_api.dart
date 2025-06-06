@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:waller_api_flutter/src/model/wallet_assets_model.dart';
-import 'package:waller_api_flutter/src/model/wallet_response.dart';
+import 'package:wallet_api_flutter/src/model/wallet_assets_model.dart';
+import 'package:wallet_api_flutter/src/model/wallet_response.dart';
 
 mixin _DioMixin {
   late Dio _dio;
