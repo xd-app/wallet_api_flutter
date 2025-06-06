@@ -56,6 +56,10 @@ mixin _ApiMixin on _DioMixin {
 
   static const String walletAssets = '$_api$_wallet/home';
 
+  ///平均出块时间和最新区块高度
+  static const String apiAverageBlockTime =
+      "$_api/rest/block/average-block-time";
+
   Future<WalletResponse<WalletAssetsModel?>> getWallet(
       {required String address}) async {
     return await _dio.getAccept(walletAssets,
@@ -64,7 +68,7 @@ mixin _ApiMixin on _DioMixin {
   }
 
   Future<WalletResponse<BlockInfo?>> getAverageBlockTime() async {
-    return await _dio.getAccept(walletAssets,
+    return await _dio.getAccept(apiAverageBlockTime,
         decode: (data) => BlockInfo.fromJson(data));
   }
 }
