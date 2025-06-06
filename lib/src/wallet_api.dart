@@ -63,10 +63,8 @@ mixin _ApiMixin on _DioMixin {
         decode: (data) => WalletAssetsModel.fromJson(data));
   }
 
-  Future<WalletResponse<BlockInfo?>> getAverageBlockTime(
-      {required String address}) async {
+  Future<WalletResponse<BlockInfo?>> getAverageBlockTime() async {
     return await _dio.getAccept(walletAssets,
-        queryParameters: {'address': address},
         decode: (data) => BlockInfo.fromJson(data));
   }
 }
