@@ -9,7 +9,7 @@ class WalletResponse<T> {
 
   bool get isOk => code == 200 && data != null;
 
-  factory WalletResponse.ok(T data) => WalletResponse(data: data);
+  factory WalletResponse.ok(T data) => WalletResponse(code: 200,data: data);
 
   factory WalletResponse.error(Map<String, dynamic> json) => WalletResponse(
         code: json['code'],
