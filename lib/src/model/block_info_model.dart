@@ -1,19 +1,19 @@
 class BlockInfo {
-  final List<AverageBlockTime> averageBlockTimePerHour;
+  // final List<AverageBlockTime> averageBlockTimePerHour;
   final List<Block> block;
 
   BlockInfo({
-    required this.averageBlockTimePerHour,
+    // required this.averageBlockTimePerHour,
     required this.block,
   });
 
   factory BlockInfo.fromJson(Map<String, dynamic> json) {
     return BlockInfo(
-      averageBlockTimePerHour: json['average_block_time_per_hour'] == null
-          ? []
-          : (json['average_block_time_per_hour'] as List)
-              .map((e) => AverageBlockTime.fromJson(e))
-              .toList(),
+      // averageBlockTimePerHour: json['average_block_time_per_hour'] == null
+      //     ? []
+      //     : (json['average_block_time_per_hour'] as List)
+      //         .map((e) => AverageBlockTime.fromJson(e))
+      //         .toList(),
       block: json['block'] == null
           ? []
           : (json['block'] as List).map((e) => Block.fromJson(e)).toList(),
@@ -22,15 +22,16 @@ class BlockInfo {
 
   Map<String, dynamic> toJson() {
     return {
-      'average_block_time_per_hour':
-          averageBlockTimePerHour.map((e) => e.toJson()).toList(),
+      // 'average_block_time_per_hour':
+      //     averageBlockTimePerHour.map((e) => e.toJson()).toList(),
       'block': block.map((e) => e.toJson()).toList(),
     };
   }
 
   @override
   String toString() {
-    return 'BlockInfo(averageBlockTimePerHour: $averageBlockTimePerHour, block: $block)';
+    // return 'BlockInfo(averageBlockTimePerHour: $averageBlockTimePerHour, block: $block)';
+    return 'BlockInfo(block: $block)';
   }
 }
 
