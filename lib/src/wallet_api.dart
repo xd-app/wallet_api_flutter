@@ -35,6 +35,9 @@ class WalletApi with _DioMixin, _ApiMixin {
   factory WalletApi._dio() {
     return _instance ??= WalletApi._()
       .._dio = Dio(BaseOptions(
+        receiveTimeout: Duration(seconds: 10),
+        sendTimeout: Duration(seconds: 10),
+        connectTimeout: Duration(seconds: 10),
         validateStatus: (status) {
           return status != null && status <= 500;
         },
