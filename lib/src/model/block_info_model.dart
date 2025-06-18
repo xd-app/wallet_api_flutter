@@ -41,7 +41,9 @@ class AverageBlockTime {
 
   factory AverageBlockTime.fromJson(Map<String, dynamic> json) {
     return AverageBlockTime(
-      averageTime: (num.tryParse(json['average_time']) ?? 0).toDouble(),
+      averageTime: json['average_time'] is double
+          ? json['average_time']
+          : json['average_time']?.toDouble(),
     );
   }
 
@@ -62,7 +64,7 @@ class Block {
 
   factory Block.fromJson(Map<String, dynamic> json) {
     return Block(
-      latestBlock: BigInt.tryParse(json['latest_block']) ?? BigInt.zero,
+      latestBlock: BigInt.from(json['latest_block'] ?? 0),
     );
   }
 
