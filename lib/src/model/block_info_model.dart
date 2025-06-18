@@ -31,18 +31,17 @@ class BlockInfo {
   @override
   String toString() {
     return 'BlockInfo(averageBlockTimePerHour: $averageBlockTimePerHour, block: $block)';
-    // return 'BlockInfo(block: $block)';
   }
 }
 
 class AverageBlockTime {
-  final String averageTime;
+  final double averageTime;
 
   AverageBlockTime({required this.averageTime});
 
   factory AverageBlockTime.fromJson(Map<String, dynamic> json) {
     return AverageBlockTime(
-      averageTime: json['average_time'],
+      averageTime: (num.tryParse(json['average_time']) ?? 0).toDouble(),
     );
   }
 
@@ -57,13 +56,13 @@ class AverageBlockTime {
 }
 
 class Block {
-  final String latestBlock;
+  final BigInt latestBlock;
 
   Block({required this.latestBlock});
 
   factory Block.fromJson(Map<String, dynamic> json) {
     return Block(
-      latestBlock: json['latest_block'],
+      latestBlock: BigInt.tryParse(json['latest_block']) ?? BigInt.zero,
     );
   }
 
