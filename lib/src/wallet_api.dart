@@ -16,12 +16,20 @@ mixin _DioMixin {
     _dio.options.baseUrl = url;
   }
 
+  void addInterceptor(List<Interceptor> interceptors) {
+    _dio.interceptors.addAll(interceptors);
+  }
+
+  set baseOptions(BaseOptions options) {
+    _dio.options = options;
+  }
+
   void enableLog(bool enable) {
-    if (enable) {
-      _dio.interceptors.add(_log);
-    } else {
-      _dio.interceptors.remove(_log);
-    }
+    // if (enable) {
+    //   _dio.interceptors.add(_log);
+    // } else {
+    //   _dio.interceptors.remove(_log);
+    // }
   }
 }
 

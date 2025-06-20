@@ -39,6 +39,15 @@ class WalletAssetsModel {
       staking: Staking.fromJson(json['staking']),
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'address': address,
+      'totalStakingAmount': totalStakingAmount,
+      'balances': balances.map((e) => e.toJson()).toList(),
+      'staking': staking.toJson(),
+    };
+  }
 }
 
 class Balance {
